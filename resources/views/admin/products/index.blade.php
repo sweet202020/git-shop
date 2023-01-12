@@ -18,11 +18,11 @@
                 <td>{{$product->name}}</td>
                 <td>{{$product->price}}</td>
 
-                <td>show-
+                <td>
+                    <a href="{{route('admin.products.show', $product->id)}}">show</a>
                     <a href="{{route('admin.products.edit', $product->id)}}">
                         <i class="fas fa-pencil fa-sm fa-fw"></i>
                     </a>
-                    <a href="{{route('admin.products.show', $product->id)}}">show</a>
                     -delete
                 </td>
             </tr>
