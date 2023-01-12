@@ -20,7 +20,7 @@ class ProductSeeder extends Seeder
             $product = new Product;
             $product->name = $faker->sentence(3);
             $product->description = $faker->text(255);
-            $product->price = $faker->randomFloat(2);
+            $product->price = $faker->randomFloat(2, 1, 999);
             $product->save();
         }
     }
