@@ -22,12 +22,8 @@
                     <a href="{{route('admin.products.edit', $product->id)}}">
                         <i class="fas fa-pencil fa-sm fa-fw"></i>
                     </a>
-                    -delete
-=======
-                <td>
                     <a href="{{route('admin.products.show', $product->id)}}">show</a>
-                    -edit-delete
-
+                    -delete
                 </td>
             </tr>
             @endforeach
