@@ -39,6 +39,7 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         //
+
     }
 
     /**
@@ -60,7 +61,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
@@ -72,7 +73,13 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $data = [
+            'name' => $request['name'],
+            'description' => $request['description'],
+            'price' => $request['price'],
+        ];
+        $product->update($data);
+        return to_route('admin.products.index');
     }
 
     /**

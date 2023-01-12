@@ -17,7 +17,12 @@
                 <td scope="row">{{$product->id}}</td>
                 <td>{{$product->name}}</td>
                 <td>{{$product->price}}</td>
-                <td>show-edit-delete</td>
+                <td>show-
+                    <a href="{{route('admin.products.edit', $product->id)}}">
+                        <i class="fas fa-pencil fa-sm fa-fw"></i>
+                    </a>
+                    -delete
+                </td>
             </tr>
             @endforeach
 
