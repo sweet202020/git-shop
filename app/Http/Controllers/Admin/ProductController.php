@@ -38,8 +38,12 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
-
+        $product = new Product();
+        $product->name = $request['name'];
+        $product->description = $request['description'];
+        $product->price = $request['price'];
+        $product->save();
+        return to_route('admin.products.index');
     }
 
     /**
@@ -50,7 +54,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('admin.products.show', compact('product'));
     }
 
     /**
