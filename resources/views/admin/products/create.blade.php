@@ -18,7 +18,7 @@
             <input type="text" name="price" id="price" class="form-control" placeholder="inserisci il nome del prodotto" aria-describedby="helpId" value="{{old('price')}}">
             <small id=" price" class="text-muted">Help text</small>
         </div>
-        <button type="submit">add product</button>
+        <button type="submit" class="btn btn-primary">add product</button>
     </div>
 </form>
 @endsection
