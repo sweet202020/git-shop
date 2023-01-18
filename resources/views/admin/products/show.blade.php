@@ -5,7 +5,7 @@
         <h1 class="mt-4">{{ $product->name }}</h1>
         <p>{{ $product->description }}</p>
         <h5>{{ $product->price }}</h5>
-        <h6>Type: {{ $project->type ? $project->type->name : 'Uncategorized' }}</h6>
+        <h6>Type: {{ $product->type ? $product->type->name : 'Uncategorized' }}</h6>
         <div class="Materie">
             @if (count($product->materials) > 0)
                 <span>Materie: </span>
