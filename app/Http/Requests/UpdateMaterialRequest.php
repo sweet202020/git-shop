@@ -13,7 +13,7 @@ class UpdateMaterialRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class UpdateMaterialRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>'nullable|max:100'
         ];
     }
 }

@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Material extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name'
+    ];
 
     public function materials(): BelongsToMany
     {
