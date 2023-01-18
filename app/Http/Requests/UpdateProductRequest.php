@@ -23,6 +23,10 @@ class UpdateProductRequest extends FormRequest
      */
     public function rules()
     {
-        return [];
+        return [
+            'name' => 'required|max:100',
+            'description' => 'nullable',
+            'price' => 'nullable|max:8'
+        ];
     }
 }

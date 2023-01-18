@@ -38,12 +38,11 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $product = new Product();
-        $product->name = $request['name'];
-        $product->description = $request['description'];
-        $product->price = $request['price'];
-        $product->save();
+        $val_data = $request->validated();
+
+        $product = Product::create($val_data);
         return to_route('admin.products.index');
+
     }
 
     /**
@@ -77,12 +76,15 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        $data = [
+
+        /*$data = [
             'name' => $request['name'],
             'description' => $request['description'],
             'price' => $request['price'],
         ];
-        $product->update($data);
+        $product->update($data);*/
+        $val_data = $request->validated();
+        $product -> update($val_data);
         return to_route('admin.products.index');
     }
 
