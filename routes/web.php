@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\ProductController;
@@ -29,6 +30,7 @@ Route::middleware(['auth', 'verified'])
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('products', ProductController::class);
         Route::resource('materials', MaterialController::class)->except(['show', 'create', 'edit']);
+        Route::resource('types', TypeController::class)->except(['show', 'create', 'edit']);
     });
 
 
