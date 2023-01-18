@@ -42,7 +42,7 @@
 
                         @forelse($types as $type)
                             <option value="{{ $type->id }}"
-                                {{ $type->id == old('type_id', $project->type_id) ? 'selected' : '' }}>{{ $type->name }}
+                                {{ $type->id == old('type_id', $product->type_id) ? 'selected' : '' }}>{{ $type->name }}
                             </option>
                         @empty
                             <option value="">Sorry, no categories in the system.</option>
@@ -66,7 +66,7 @@
                                     {{ $material->name }}</option>
                             @else
                                 <option
-                                    value="{{ $material->id }}"{{ $project->materials->contains($material->id) ? 'selected' : '' }}>
+                                    value="{{ $material->id }}"{{ $product->materials->contains($material->id) ? 'selected' : '' }}>
                                     {{ $material->name }}</option>
                             @endif
                         @empty
