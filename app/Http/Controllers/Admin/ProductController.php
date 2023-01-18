@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Models\Type;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Material;
 use App\Models\Product;
 
 class ProductController extends Controller
@@ -16,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::orderByDesc('id')->get();
         return view('admin.products.index', compact('products'));
     }
 
@@ -27,7 +28,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
+        $types = Type::all();
+        $materials = Material::all();
+        return view('admin.products.create', compact('types','materials'));
     }
 
     /**
@@ -41,7 +44,10 @@ class ProductController extends Controller
         $val_data = $request->validated();
 
         $product = Product::create($val_data);
-        return to_route('admin.products.index');
+        if ($request->has('materials')) {
+            $product->materials()->attach($val_data['materials']);
+        }
+        return to_route('admin.products.index')->with('message', "$product->name add successfully");
 
     }
 
@@ -64,7 +70,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.products.edit', compact('product'));
+        $types = Type::all();
+        $materials = Material::all();
+        return view('admin.products.edit', compact('product','types','materials'));
     }
 
     /**
@@ -85,7 +93,13 @@ class ProductController extends Controller
         $product->update($data);*/
         $val_data = $request->validated();
         $product -> update($val_data);
-        return to_route('admin.products.index');
+        if ( $product->has('materials')) {
+            $product->materials()->sync($val_data['materials']);
+        } else {
+            $product->materials()->sync([]);
+        }
+        return to_route('admin.products.index')->with('message', "$product->name update successfully");;
+        
     }
 
     /**

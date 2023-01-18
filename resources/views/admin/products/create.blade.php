@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <form action="{{ route('admin.products.store') }}" method="post">
+    <form action="{{ route('admin.products.store') }}" method="post" class="card p-3">
         @if ($errors->any())
             <div class="alert alert-danger" role="alert">
                 <ul>
@@ -11,8 +11,8 @@
             </div>
         @endif
         @csrf
-
         <div class="container">
+            {{-- DIVISORIO --}}
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" name="name" id="name" class="form-control  @error('name') is-invalid @enderror"
@@ -24,7 +24,45 @@
                     {{ $message }}
                 </div>
             @enderror
+            {{-- DIVISORIO --}}
+            <div class="mb-3">
+                <label for="type_id" class="form-label">Type</label>
+                <select class="form-select form-select-lg @error('type_id') is-invalid @enderror" name="type_id"
+                    id="type_id">
+                    <option selected value=''>Select one</option>
+                    @forelse ($types as $type)
+                        <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
+                            {{ $type->name }}</option>
+                    @empty
+                        <h6>Sorry.No types inside the database yet.</h6>
+                    @endforelse
+                </select>
+            </div>
+            @error('type_id')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
 
+            {{-- DIVISORIO --}}
+
+            <div class="mb-3">
+                <label for="materials" class="form-label">City</label>
+                <select multiple class="form-select form-select-lg" name="materials[]" id="materials">
+                    <option value="" disabled>Select one</option>
+                    @forelse ($materials as $material)
+                        <option
+                            value="{{ $material->id }}"{{ in_array($material->id, old('materials', [])) ? 'selected' : '' }}>
+                            {{ $material->name }}</option>
+                    @empty
+                        <h6>Sorry.No materials inside the database yet.</h6>
+                    @endforelse
+                </select>
+            </div>
+            @error('materials')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+
+
+            {{-- DIVISORIO --}}
             <div class="mb-3">
                 <label for="description" class="form-label">description</label>
                 <textarea name="description" class="form-control  @error('description') is-invalid @enderror" id="description"
@@ -36,7 +74,7 @@
                     {{ $message }}
                 </div>
             @enderror
-
+            {{-- DIVISORIO --}}
             <div class="mb-3">
                 <label for="price" class="form-label">price</label>
                 <input type="text" name="price" id="price"
@@ -49,7 +87,7 @@
                     {{ $message }}
                 </div>
             @enderror
-
+            {{-- DIVISORIO --}}
             <button type="submit" class="btn btn-primary">add product</button>
 
         </div>

@@ -26,7 +26,9 @@ class StoreProductRequest extends FormRequest
         return [
             'name' => 'required|max:100',
             'description' => 'nullable',
-            'price' => 'nullable|max:8'
+            'price' => 'nullable|max:8',
+            'type_id' => 'nullable|exists:types,id',
+            'materials' => 'exists:materials,id'
         ];
     }
 }
