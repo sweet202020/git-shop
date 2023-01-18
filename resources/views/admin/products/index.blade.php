@@ -19,12 +19,12 @@
                 <td>{{$product->price}}</td>
 
                 <td>
-                    <a href="{{route('admin.products.show', $product->id)}}">show</a>
-                    <a href="{{route('admin.products.edit', $product->id)}}">
+                    <a href="{{route('admin.products.show', $product->id)}}" class="btn btn-primary">show</a>
+                    <a href="{{route('admin.products.edit', $product->id)}}" class="btn btn-secondary">
                         <i class="fas fa-pencil fa-sm fa-fw"></i>
                     </a>
                     <!-- Modal trigger button -->
-                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_product_{{$product->id}}">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_product_{{$product->id}}">
                         Delete
                     </button>
 
