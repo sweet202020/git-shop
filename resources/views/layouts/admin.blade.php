@@ -68,6 +68,20 @@
                                     Products
                                 </a>
                             </li>
+                            {{-- <li class="nav-item">
+                                <a class="nav-link {{ Route::currentRouteName() === 'admin.type.index' ? 'active' : '' }}"
+                                    href="{{ route('admin.type.index') }}">
+                                    <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                                    Type
+                                </a>
+                            </li> --}}
+                            <li class="nav-item">
+                                <a class="nav-link {{ Route::currentRouteName() === 'admin.materials.index' ? 'active' : '' }}"
+                                    href="{{ route('admin.materials.index') }}">
+                                    <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                                    Materials
+                                </a>
+                            </li>
 
                         </ul>
                     </div>
