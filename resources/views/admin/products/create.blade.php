@@ -67,7 +67,7 @@
              {{-- DIVISORIO  CAMBIATO--}}
 
              <div class="mb-3">
-                <label for="materials" class="form-label">Materials</label>
+                <label for="materialfgdfhfds" class="form-label">Materials</label>
                 <select multiple class="form-select form-select-lg" name="materials[]" id="materials">
                     <option value="" disabled>Select one</option>
                     @forelse ($materials as $material)
