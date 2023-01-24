@@ -13,8 +13,8 @@ class Material extends Model
         'name'
     ];
 
-    public function materials(): BelongsToMany
+    public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Technology::class);
+        return $this->belongsToMany(Product::class);
     }
 }
