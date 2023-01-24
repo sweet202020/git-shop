@@ -17,9 +17,9 @@ class Product extends Model
 
 
 
-    public function Material(): BelongsToMany
+    public function materials(): BelongsToMany
     {
-        return $this->belongsToMany(Material::class);
+        return $this->belongsToMany(Product::class);
     }
     /**
      * Get the type that owns the Product
