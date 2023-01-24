@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('material_product', function (Blueprint $table) {
 
-            $table->foreign('material_id')->references('id')->on('materials')->cascadeOnDelete();
             $table->unsignedBigInteger('material_id');
+            $table->foreign('material_id')->references('id')->on('materials')->cascadeOnDelete();
             
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->cascadeOnDelete();
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_material');
+        Schema::dropIfExists('material_product');
     }
 };
