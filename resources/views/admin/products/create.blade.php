@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<form action="{{ route('admin.products.store') }}" method="post" class="card p-3 mb-5">
+<form action="{{ route('admin.products.store') }}" method="post" class="card p-3 mb-3">
     @if ($errors->any())
     <div class="alert alert-danger" role="alert">
         <ul>
