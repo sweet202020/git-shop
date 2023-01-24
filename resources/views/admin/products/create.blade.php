@@ -63,6 +63,29 @@
 
 
             {{-- DIVISORIO --}}
+
+             {{-- DIVISORIO  CAMBIATO--}}
+
+             <div class="mb-3">
+                <label for="materials" class="form-label">Materials</label>
+                <select multiple class="form-select form-select-lg" name="materials[]" id="materials">
+                    <option value="" disabled>Select one</option>
+                    @forelse ($materials as $material)
+                        <option
+                            value="{{ $material->id }}"{{ in_array($material->id, old('materials', [])) ? 'selected' : '' }}>
+                            {{ $material->name }}</option>
+                    @empty
+                        <h6>Sorry.No materials inside the database yet.</h6>
+                    @endforelse
+                </select>
+            </div>
+            @error('materials')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+
+
+            {{-- DIVISORIO --}}
+
             <div class="mb-3">
                 <label for="description" class="form-label">description</label>
                 <textarea name="description" class="form-control  @error('description') is-invalid @enderror" id="description"
@@ -75,6 +98,21 @@
                 </div>
             @enderror
             {{-- DIVISORIO --}}
+            <div class="mb-3">
+                <label for="price" class="form-label">price</label>
+                <input type="text" name="price" id="price"
+                    class="form-control  @error('price') is-invalid @enderror" placeholder="inserisci il nome del prodotto"
+                    aria-describedby="helpId" value="{{ old('price') }}">
+                <small id=" price" class="text-muted">Help text</small>
+            </div>
+            @error('price')
+                <div class="alert alert-danger" role="alert">
+                    {{ $message }}
+                </div>
+            @enderror
+            {{-- DIVISORIO --}}
+
+            {{-- DIVISORIO CAMBIATO --}}
             <div class="mb-3">
                 <label for="price" class="form-label">price</label>
                 <input type="text" name="price" id="price"
